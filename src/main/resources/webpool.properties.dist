@@ -1,0 +1,9 @@
+driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+jdbcUrl=jdbc:sqlserver://localhost;databaseName=DATABASE_NAME_HERE;
+maximumPoolSize=20
+username=YOUR_USERNAME
+password=YOUR_PASSWORD
+dataSource.cachePrepStmts=true
+dataSource.prepStmtCacheSize=250
+dataSource.prepStmtCacheSqlLimit=2048
+poolName="POOL-APP-NAME"

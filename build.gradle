@@ -1,0 +1,65 @@
+group 'com.pol3'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        jstlVersion = '1.2.1'
+        jspApiVersion = '2.2'
+        servletApiVersion = '3.1.0'
+        slf4jVersion = '1.7.21'
+        logbackVersion = '1.1.7'
+
+        // All of Spring
+        spring_version = '4.3.10.RELEASE'
+        spring_security_version = '4.2.3.RELEASE'
+        // Hibernate, MS SQL and HikariCP
+        hibernate_version = '5.2.2.Final'
+        hikari_version = '2.6.3'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // -----------------------------------------------------------------------
+    // JSTL
+    // -----------------------------------------------------------------------
+    compile "javax.servlet:javax.servlet-api:$servletApiVersion"
+    compile "javax.servlet.jsp:jsp-api:$jspApiVersion"
+    compile "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:$jstlVersion"
+    compile "jstl:jstl:1.2"
+
+    // -----------------------------------------------------------------------
+    // Logging
+    // -----------------------------------------------------------------------
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    compile "ch.qos.logback:logback-classic:$logbackVersion"
+
+    // -----------------------------------------------------------------------
+    // Spring Framework
+    // -----------------------------------------------------------------------
+    compile "org.springframework:spring-webmvc:$spring_version"
+    compile "org.springframework:spring-tx:$spring_version"
+    compile "org.springframework:spring-orm:$spring_version"
+
+    // -----------------------------------------------------------------------
+    // Spring Security
+    // -----------------------------------------------------------------------
+    compile "org.springframework.security:spring-security-core:$spring_security_version"
+    compile "org.springframework.security:spring-security-web:$spring_security_version"
+
+    // -----------------------------------------------------------------------
+    // DB Pools, ORMs (Hibernate) and other shit
+    // -----------------------------------------------------------------------
+    compile "org.hibernate:hibernate-core:$hibernate_version"
+    compile "org.hibernate:hibernate-entitymanager:$hibernate_version"
+    compile "com.zaxxer:HikariCP:$hikari_version"
+    compile "com.microsoft.sqlserver:mssql-jdbc:6.2.1.jre8"
+}
