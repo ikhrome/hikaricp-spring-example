@@ -2,10 +2,10 @@ package com.pol3.webdisp.dao;
 
 import com.pol3.webdisp.model.Dog;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.CriteriaSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class DogDAOImpl implements DogDAO {
@@ -21,10 +21,12 @@ public class DogDAOImpl implements DogDAO {
 
     @Override
     @Transactional
-    @SuppressWarnings({"unchecked", "deprecation"})
+    @SuppressWarnings({"unchecked"})
     public List<Dog> list() {
-        return (List<Dog>) sessionFactory.getCurrentSession()
-                .createCriteria(Dog.class)
-                .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
+        TypedQuery<Dog> dogTypedQuery = sessionFactory
+                .getCurrentSession()
+                .createQuery("FROM Dog");
+
+        return dogTypedQuery.getResultList();
     }
 }
