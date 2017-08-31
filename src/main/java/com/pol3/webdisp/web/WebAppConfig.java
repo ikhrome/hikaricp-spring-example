@@ -57,9 +57,9 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 
         sessionBuilder.scanPackages("com.pol3.webdisp.model");
-        sessionBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        sessionBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
         sessionBuilder.setProperty("hibernate.enable_lazy_load_no_trans", "true");
-        sessionBuilder.setProperty("hibernate.hbm2ddl.auto", "update");
+        sessionBuilder.setProperty("hibernate.hbm2ddl.auto", "create");
 
         return sessionBuilder.buildSessionFactory();
     }
