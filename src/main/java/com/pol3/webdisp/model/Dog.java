@@ -12,13 +12,13 @@ public class Dog {
     @Column(name = "Id")
     private int id;
 
-    @Column(name = "Name")
+    @Column(name = "Name", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "BirthDate")
+    @Column(name = "BirthDate", nullable = false)
     private Date birthDate;
 
-    @Column(name = "Location")
+    @Column(name = "Location", nullable = false)
     private String location;
 
     public int getId() {
