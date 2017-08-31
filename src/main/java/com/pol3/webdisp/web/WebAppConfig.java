@@ -47,9 +47,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public DataSource dataSource() throws SQLException {
         HikariConfig config = new HikariConfig("/webpool.properties");
-        HikariDataSource dataSource = new HikariDataSource(config);
 
-        return dataSource;
+        return new HikariDataSource(config);
     }
 
     @Bean(name = "sessionFactory")
